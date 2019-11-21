@@ -37,26 +37,37 @@ room['treasure'].s_to = room['narrow']
 #
 # Main
 #
-
-# Make a new player object that is currently in the 'outside' room.
 player = Player('James', room['outside'])
-print(player.current_room.n_to.name)
-# Write a loop that:
-# game = True
-# while game:
-#     try:
-#         print(f'You are currently {player}')
-#         selection = input("Choose a direction to go n, e, w, s, z to Exit")
-#         if selection == 'z':
-#             game = False
-#         else:
-#             if room[{player.current_room}]
+print(
+    f'Wecome to generic_adventure_game! you are at {player.current_room}')
 
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
+game = True
+while game:
+    try:
+        # print(f'You are currently {player}')
+        selection = input(
+            "Choose a direction to go N, E, W, S to Exit:  \n").capitalize()
+        if selection == 'N':
+            player.move_player(selection)
+        elif selection == 'E':
+            player.move_player(selection)
+        elif selection == 'S':
+            player.move_player(selection)
+        elif selection == 'W':
+            player.move_player(selection)
+        elif selection == 'Z':
+            game = False
+
+        else:
+            print("Please enter a valid choice")
+    except Exception as inst:
+        print(inst)
+        # if room[{player.current_room}]
+        # * Prints the current room name
+        # * Prints the current description (the textwrap module might be useful here).
+        # * Waits for user input and decides what to do.
+        #
+        # If the user enters a cardinal direction, attempt to move to the room there.
+        # Print an error message if the movement isn't allowed.
+        #
+        # If the user enters "q", quit the game.
