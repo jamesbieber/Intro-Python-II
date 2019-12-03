@@ -3,13 +3,35 @@
 
 
 class Player:
-    def __init__(self, name, current_room):
+    def __init__(self, name, current_room, inventory=None):
         self.name = name
         self.current_room = current_room
+        if inventory is None:
+            self.inventory = []
+        else:
+            self.inventory = inventory
 
     def __str__(self):
         output = f'You are currently {self.current_room.name}'
         return output
+
+    def show_inventory(self):
+        i = 0
+        output = ""
+        while i < len(self.inventory):
+            output += self.inventory[i].name
+            output += " "
+            i += 1
+
+        print(output)
+
+    def pick_up(self, item):
+        self.inventory.append(item)
+        print(f'Picked up {item}.')
+
+    def drop(self, item):
+        self.inventory.remove(item)
+        print(f'Dropped {item.name}.')
 
     def move_player(self, direction):
         if direction == 'N':
